@@ -19,11 +19,10 @@ export default function Discover() {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            Lizard
+            Discover Emerging Trends
           </Typography>
           <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
+           Explore latest developments in AI, Web3, and emerging technologies shaping India’s tech ecosystem.
           </Typography>
         </CardContent>
       </CardActionArea>

@@ -7,6 +7,7 @@ import MediaExposure from "./MediaExposure";
 import CustomizedTimeline from "./CustomizedTimeline";
 import HeroSection from "./HeroSection";
 import MultiActionAreaCard from "./MultiActionAreaCard";
+import ContactSection from "./ContactSection";
 import VantaBackground from  './VantaBackground';
 
 // import Link from '@mui/material/Link';
@@ -70,6 +71,7 @@ Join the Bharat Economic Forum Industry Conclave 2025
   <MediaExposure/>
   <HeroSection/>
   <MultiActionAreaCard/>
+  <ContactSection/>
 
 
       
