@@ -3,8 +3,12 @@ import logo_path from "../assets/img/logo.png";
 import Button from '@mui/material/Button';
 
 import { motion } from "framer-motion";
+import MediaExposure from "./MediaExposure";
+import CustomizedTimeline from "./CustomizedTimeline";
+import HeroSection from "./HeroSection";
+import MultiActionAreaCard from "./MultiActionAreaCard";
+import VantaBackground from  './VantaBackground';
 
-import VantaBackground from  './VantaBackground'
 // import Link from '@mui/material/Link';
 function homepage() {
 
@@ -61,6 +65,11 @@ Join the Bharat Economic Forum Industry Conclave 2025
   
     </VantaBackground>
   </section>
+
+  <CustomizedTimeline/>
+  <MediaExposure/>
+  <HeroSection/>
+  <MultiActionAreaCard/>
 
 
       
