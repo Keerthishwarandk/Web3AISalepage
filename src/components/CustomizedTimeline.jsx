@@ -22,7 +22,7 @@ export default function CustomizedTimeline() {
           variant="body2"
           color="text.secondary"
         >
-          9:30 am
+        10:00 AM - 10:30 AM
         </TimelineOppositeContent>
         <TimelineSeparator>
           <TimelineConnector />
@@ -33,9 +33,9 @@ export default function CustomizedTimeline() {
         </TimelineSeparator>
         <TimelineContent sx={{ py: '12px', px: 2 }}>
           <Typography variant="h6" component="span">
-            Eat
+            🌟 Morning Kickoff
           </Typography>
-          <Typography>Because you need strength</Typography>
+          <Typography>National leaders set the vision Cultural Performance: Celebrating India's heritage</Typography>
         </TimelineContent>
       </TimelineItem>
       <TimelineItem>
@@ -44,7 +44,7 @@ export default function CustomizedTimeline() {
           variant="body2"
           color="text.secondary"
         >
-          10:00 am
+         10:30 AM - 2:00 PM
         </TimelineOppositeContent>
         <TimelineSeparator>
           <TimelineConnector />
@@ -55,12 +55,21 @@ export default function CustomizedTimeline() {
         </TimelineSeparator>
         <TimelineContent sx={{ py: '12px', px: 2 }}>
           <Typography variant="h6" component="span">
-            Code
+            🔥 Viksit Bharat Dialogues 
           </Typography>
-          <Typography>Because it&apos;s awesome!</Typography>
+          <Typography>16 industry roundtables featuring CEOs, policymakers & innovators</Typography>
         </TimelineContent>
       </TimelineItem>
+
+      
       <TimelineItem>
+        <TimelineOppositeContent
+          sx={{ m: 'auto 0' }}
+          variant="body2"
+          color="text.secondary"
+        >
+       3:00 PM - 4:30 PM
+        </TimelineOppositeContent>
         <TimelineSeparator>
           <TimelineConnector />
           <TimelineDot color="primary" variant="outlined">
@@ -70,12 +79,19 @@ export default function CustomizedTimeline() {
         </TimelineSeparator>
         <TimelineContent sx={{ py: '12px', px: 2 }}>
           <Typography variant="h6" component="span">
-            Sleep
+            🏆 Viksit Bharat Awards
           </Typography>
-          <Typography>Because you need rest</Typography>
+          <Typography>Honoring game-changers across Innovation, Sustainability & Leadership</Typography>
         </TimelineContent>
       </TimelineItem>
       <TimelineItem>
+          <TimelineOppositeContent
+          sx={{ m: 'auto 0' }}
+          variant="body2"
+          color="text.secondary"
+        >
+         4:30 PM - 9:00 PM
+        </TimelineOppositeContent>
         <TimelineSeparator>
           <TimelineConnector sx={{ bgcolor: 'secondary.main' }} />
           <TimelineDot color="secondary">
@@ -85,11 +101,21 @@ export default function CustomizedTimeline() {
         </TimelineSeparator>
         <TimelineContent sx={{ py: '12px', px: 2 }}>
           <Typography variant="h6" component="span">
-            Repeat
+            🥂 Evening Networking & Luxury Dinner
           </Typography>
-          <Typography>Because this is the life you love!</Typography>
+          <Typography>Gourmet meal, unlimited cocktails, and elite networking</Typography>
         </TimelineContent>
+        
       </TimelineItem>
+      
     </Timeline>
   );
 }
+
+
+
+
+
+
+
+
