@@ -1,7 +1,7 @@
 import React from "react";
 import logo_path from "../assets/img/logo.png";
 import Button from '@mui/material/Button';
-import Countdown from "./Countdown";
+// import Countdown from "./Countdown";
 
 import { motion } from "framer-motion";
 
@@ -13,7 +13,6 @@ import MultiActionAreaCard from "./MultiActionAreaCard";
 import ContactSection from "./ContactSection";
 import VantaBackground from  './VantaBackground';
 
-import VantaBackground from './VantaBackground';
 
 
 import FeaturedSpeakers from "./FeaturedSpeakers";
@@ -27,7 +26,7 @@ import VenueInfo from "./VenueInfo";
 import Partners from "./Partners";
 import RegisterNow from "./RegisterNow";
 
-function Homepage() {
+const Homepage = () => {
   return (
     <>
       <div className="contactheader flex items-center justify-between h-10 w-full bg-purple-950">
@@ -40,12 +39,10 @@ function Homepage() {
           <a className="text-lime-50 pr-6 flex items-center" href="#contact">Contact Us</a>
         </div>
       </div>
-// Keep both versions if they don’t conflict:
-<div className="contactheader ...">
-  ...
-</div>
 
-<Countdown />  {/* Your new component */}
+
+
+
 
       <div id="header-div" className="flex justify-between w-full bg-white">
         <div className="logo w-24 h-18">
@@ -81,8 +78,6 @@ function Homepage() {
       <HeroSection />
       <MultiActionAreaCard />
 
-
-      {/* New Components Added */}
       <FeaturedSpeakers />
       <PastConclaves />
       <Testimonials />
@@ -93,12 +88,14 @@ function Homepage() {
       <VenueInfo />
       <Partners />
       <RegisterNow />
+
+
+ 
+    
     </>
   );
 
-<section>
-  <Countdown />
-</section>
+}
 
 
 export default Homepage;
