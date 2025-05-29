@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { Clock, Award, Users, Calendar, Coffee, Mic, Star, Sparkles } from 'lucide-react';
 
@@ -18,7 +17,9 @@ const EventSchedule = () => {
       description: 'Inaugural address by national leaders + Cultural performances',
       emoji: '☀️',
       gradient: 'from-amber-500 to-orange-500',
-      bgGradient: 'from-amber-50 to-orange-50'
+      bgGradient: 'from-amber-50/80 via-orange-50/60 to-yellow-50/80',
+      glowColor: 'amber-500/20',
+      accent: 'amber'
     },
     {
       icon: Users,
@@ -27,7 +28,9 @@ const EventSchedule = () => {
       description: 'AI, FinTech, Energy, MSME, HealthTech + Networking breaks',
       emoji: '🔍',
       gradient: 'from-blue-500 to-indigo-500',
-      bgGradient: 'from-blue-50 to-indigo-50'
+      bgGradient: 'from-blue-50/80 via-indigo-50/60 to-slate-50/80',
+      glowColor: 'blue-500/20',
+      accent: 'blue'
     },
     {
       icon: Award,
@@ -36,7 +39,9 @@ const EventSchedule = () => {
       description: 'Honors for leaders + Press coverage',
       emoji: '🏆',
       gradient: 'from-purple-500 to-pink-500',
-      bgGradient: 'from-purple-50 to-pink-50'
+      bgGradient: 'from-purple-50/80 via-pink-50/60 to-rose-50/80',
+      glowColor: 'purple-500/20',
+      accent: 'purple'
     },
     {
       icon: Coffee,
@@ -45,196 +50,307 @@ const EventSchedule = () => {
       description: "Networking with India's elite",
       emoji: '🥂',
       gradient: 'from-emerald-500 to-teal-500',
-      bgGradient: 'from-emerald-50 to-teal-50'
+      bgGradient: 'from-emerald-50/80 via-teal-50/60 to-cyan-50/80',
+      glowColor: 'emerald-500/20',
+      accent: 'emerald'
     }
   ];
 
-  const FloatingIcon = ({ delay, size, position, rotation }) => (
+  const FloatingElement = ({ delay, size, position, color, blur = false }) => (
     <div 
-      className={`absolute ${position} ${size} text-purple-300/20`}
+      className={`absolute ${position} ${size} ${blur ? 'blur-sm' : ''}`}
       style={{
-        animation: `float 8s ease-in-out infinite ${delay}s, fadeInOut 6s ease-in-out infinite ${delay}s`,
-        transform: `rotate(${rotation}deg)`
+        background: `linear-gradient(135deg, ${color})`,
+        borderRadius: '50%',
+        opacity: 0.1,
+        animation: `float 15s ease-in-out infinite ${delay}s, pulse 5s ease-in-out infinite ${delay * 0.5}s`
       }}
-    >
-      <Calendar className="w-full h-full" />
-    </div>
+    />
   );
 
-  const TimelineConnector = ({ index, total }) => (
+  const TimelineConnector = ({ index, total, isHovered }) => (
     index < total - 1 && (
-      <div className="absolute left-8 top-20 w-0.5 h-16 bg-gradient-to-b from-purple-300 to-blue-300 opacity-60"></div>
+      <div className="absolute left-8 top-24 w-0.5 h-20 bg-gradient-to-b from-slate-300 via-purple-300 to-blue-300 opacity-40">
+        <div 
+          className={`absolute inset-0 bg-gradient-to-b from-purple-500 to-blue-500 transition-all duration-700 ${
+            isHovered ? 'opacity-80 scale-x-[2]' : 'opacity-0'
+          }`}
+          style={{ transformOrigin: 'center' }}
+        />
+      </div>
     )
   );
 
   return (
-    <section className="relative min-h-screen py-20 px-6 overflow-hidden" id="schedule">
-      {/* Sophisticated Background */}
-      <div className="absolute inset-0">
-        {/* Base gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-indigo-50 via-purple-50/80 to-pink-100/90"></div>
-        
-        {/* Animated mesh gradient */}
-        <div 
-          className="absolute inset-0 opacity-40"
-          style={{
-            background: `
-              radial-gradient(circle at 20% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
-              radial-gradient(circle at 80% 80%, rgba(168, 85, 247, 0.15) 0%, transparent 50%),
-              radial-gradient(circle at 40% 60%, rgba(236, 72, 153, 0.15) 0%, transparent 50%),
-              radial-gradient(circle at 70% 30%, rgba(59, 130, 246, 0.15) 0%, transparent 50%)
-            `,
-            animation: 'meshMove 25s ease-in-out infinite'
-          }}
-        />
-
-        {/* Dynamic light rays */}
-        <div 
-          className="absolute inset-0 opacity-20"
-          style={{
-            background: 'conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(147, 51, 234, 0.1) 60deg, transparent 120deg, rgba(59, 130, 246, 0.1) 180deg, transparent 240deg, rgba(236, 72, 153, 0.1) 300deg, transparent 360deg)',
-            animation: 'spin 30s linear infinite'
-          }}
-        />
-      </div>
-
-      {/* Floating decorative elements */}
-      <FloatingIcon delay={0} size="w-6 h-6" position="top-20 left-[15%]" rotation={15} />
-      <FloatingIcon delay={2} size="w-4 h-4" position="top-40 right-[20%]" rotation={-20} />
-      <FloatingIcon delay={1} size="w-5 h-5" position="bottom-32 left-[70%]" rotation={45} />
-      <FloatingIcon delay={3} size="w-3 h-3" position="top-80 right-[60%]" rotation={-15} />
-
-      <div className="relative max-w-6xl mx-auto">
-        {/* Header Section */}
-        <div className={`text-center mb-16 transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-          <div className="flex justify-center items-center mb-6">
-            <div className="relative">
-              <div className="absolute -inset-2 bg-gradient-to-r from-purple-600/20 to-pink-600/20 blur-xl rounded-full animate-pulse"></div>
-              <Calendar className="relative w-16 h-16 text-purple-600" />
-            </div>
-          </div>
+    <>
+      <style>
+        {`
+          @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            25% { transform: translateY(-15px) rotate(3deg); }
+            50% { transform: translateY(-8px) rotate(-2deg); }
+            75% { transform: translateY(-12px) rotate(1deg); }
+          }
           
-          <h2 className="text-6xl md:text-7xl font-extrabold mb-6 relative">
-            <span className="bg-gradient-to-r from-indigo-800 via-purple-800 to-pink-800 bg-clip-text text-transparent">
-              Event Schedule
-            </span>
-            <div className="absolute -inset-1 bg-gradient-to-r from-purple-600/20 to-pink-600/20 blur-xl -z-10 animate-pulse"></div>
-          </h2>
+          @keyframes meshMove {
+            0%, 100% { transform: rotate(0deg) scale(1) translate(0, 0); }
+            25% { transform: rotate(0.5deg) scale(1.01) translate(10px, -5px); }
+            50% { transform: rotate(-0.3deg) scale(0.99) translate(-5px, 10px); }
+            75% { transform: rotate(0.8deg) scale(1.02) translate(8px, -8px); }
+          }
           
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            A meticulously crafted agenda designed to inspire, connect, and drive India's future forward
-          </p>
+          @keyframes shimmerLine {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+          }
           
-          <div className="flex justify-center mt-8">
-            <div className="w-40 h-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-full relative overflow-hidden">
-              <div 
-                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/60 to-transparent"
-                style={{ animation: 'shimmer 2s ease-in-out infinite' }}
-              />
-            </div>
-          </div>
+          @keyframes pulse {
+            0%, 100% { opacity: 0.1; }
+            50% { opacity: 0.2; }
+          }
+          
+          @keyframes fadeInOut {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 0.4; }
+          }
+          
+          @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+          }
+          
+          @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+          }
+        `}
+      </style>
+      
+      <section className="relative min-h-screen py-24 px-6 overflow-hidden" id="schedule">
+        {/* Ultra-premium background */}
+        <div className="absolute inset-0">
+          {/* Base sophisticated gradient */}
+          <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-slate-50 to-indigo-50"></div>
+          
+          {/* Luxury mesh overlay */}
+          <div 
+            className="absolute inset-0 opacity-30"
+            style={{
+              background: `
+                radial-gradient(circle at 20% 20%, rgba(99, 102, 241, 0.12) 0%, transparent 60%),
+                radial-gradient(circle at 80% 80%, rgba(168, 85, 247, 0.10) 0%, transparent 60%),
+                radial-gradient(circle at 40% 60%, rgba(236, 72, 153, 0.08) 0%, transparent 60%),
+                radial-gradient(circle at 70% 30%, rgba(59, 130, 246, 0.11) 0%, transparent 60%)
+              `,
+              animation: 'meshMove 25s ease-in-out infinite'
+            }}
+          />
+
+          {/* Dynamic light rays */}
+          <div 
+            className="absolute inset-0 opacity-15"
+            style={{
+              background: 'conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(147, 51, 234, 0.08) 60deg, transparent 120deg, rgba(59, 130, 246, 0.06) 180deg, transparent 240deg, rgba(236, 72, 153, 0.07) 300deg, transparent 360deg)',
+              animation: 'spin 40s linear infinite'
+            }}
+          />
+
+          {/* Premium texture overlay */}
+          <div 
+            className="absolute inset-0 opacity-[0.015]"
+            style={{
+              backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(0,0,0,0.2) 1px, transparent 0)',
+              backgroundSize: '28px 28px'
+            }}
+          />
         </div>
 
-        {/* Schedule Timeline */}
-        <div className="relative">
-          {scheduleItems.map((item, index) => (
-            <div 
-              key={item.title}
-              className={`relative mb-12 transform transition-all duration-700 ${isVisible ? 'translate-x-0 opacity-100' : 'translate-x-12 opacity-0'}`}
-              style={{ 
-                transitionDelay: `${400 + index * 200}ms`,
-                transform: hoveredItem === index ? 'scale(1.02) translateY(-4px)' : 'scale(1) translateY(0)'
-              }}
-              onMouseEnter={() => setHoveredItem(index)}
-              onMouseLeave={() => setHoveredItem(null)}
-            >
-              {/* Timeline Connector */}
-              <TimelineConnector index={index} total={scheduleItems.length} />
+        {/* Elegant floating elements */}
+        <FloatingElement delay={0} size="w-28 h-28" position="top-20 left-[10%]" color="rgba(99, 102, 241, 0.08), rgba(147, 197, 253, 0.04)" />
+        <FloatingElement delay={2} size="w-20 h-20" position="top-60 right-[15%]" color="rgba(168, 85, 247, 0.06), rgba(196, 181, 253, 0.03)" blur />
+        <FloatingElement delay={1} size="w-24 h-24" position="bottom-40 left-[65%]" color="rgba(236, 72, 153, 0.07), rgba(251, 207, 232, 0.04)" />
+        <FloatingElement delay={3} size="w-16 h-16" position="top-96 right-[70%]" color="rgba(59, 130, 246, 0.09), rgba(165, 180, 252, 0.05)" blur />
+
+        <div className="relative max-w-6xl mx-auto">
+          {/* Refined Header */}
+          <div className={`text-center mb-20 transform transition-all duration-1200 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
+            <div className="flex justify-center items-center mb-8">
+              <div className="relative">
+                <div className="absolute -inset-4 bg-gradient-to-r from-purple-600/10 via-indigo-600/10 to-blue-600/10 blur-2xl rounded-full"></div>
+                <div className="relative p-4 bg-white/80 backdrop-blur-sm rounded-2xl border border-white/60 shadow-lg">
+                  <Calendar className="w-12 h-12 text-slate-700" />
+                </div>
+              </div>
+            </div>
+            
+            <div className="space-y-6">
+              <h2 className="text-6xl md:text-7xl font-black tracking-tight relative">
+                <span className="bg-gradient-to-r from-slate-900 via-slate-700 to-slate-900 bg-clip-text text-transparent">
+                  Event
+                </span>
+                <br />
+                <span className="bg-gradient-to-r from-indigo-800 via-purple-800 to-pink-800 bg-clip-text text-transparent">
+                  Schedule
+                </span>
+              </h2>
               
-              <div className={`relative backdrop-blur-xl bg-gradient-to-r ${item.bgGradient} rounded-3xl p-8 border border-white/40 shadow-xl group hover:shadow-2xl transition-all duration-500`}>
-                {/* Animated border glow */}
-                <div className={`absolute inset-0 rounded-3xl bg-gradient-to-r ${item.gradient} opacity-0 group-hover:opacity-20 transition-opacity duration-500 blur-sm -z-10`}></div>
+              <p className="text-xl md:text-2xl text-slate-600 max-w-3xl mx-auto leading-relaxed font-light">
+                A meticulously crafted agenda designed to inspire, connect, and drive India's future forward
+              </p>
+            </div>
+            
+            <div className="flex justify-center mt-12">
+              <div className="relative">
+                <div className="w-48 h-0.5 bg-gradient-to-r from-transparent via-slate-300 to-transparent"></div>
+                <div 
+                  className="absolute inset-0 w-48 h-0.5 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-60"
+                  style={{ 
+                    animation: 'shimmerLine 3s ease-in-out infinite',
+                    background: 'linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.8), transparent)',
+                    backgroundSize: '200% 100%'
+                  }}
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Premium Schedule Timeline */}
+          <div className="relative">
+            {scheduleItems.map((item, index) => (
+              <div 
+                key={item.title}
+                className={`relative mb-16 transform transition-all duration-700 ${isVisible ? 'translate-x-0 opacity-100' : 'translate-x-12 opacity-0'}`}
+                style={{ 
+                  transitionDelay: `${600 + index * 300}ms`,
+                }}
+                onMouseEnter={() => setHoveredItem(index)}
+                onMouseLeave={() => setHoveredItem(null)}
+              >
+                {/* Timeline Connector */}
+                <TimelineConnector index={index} total={scheduleItems.length} isHovered={hoveredItem === index} />
                 
-                <div className="flex items-start gap-6">
-                  {/* Icon & Timeline dot */}
-                  <div className="flex flex-col items-center">
-                    <div 
-                      className={`relative p-4 bg-gradient-to-r ${item.gradient} rounded-2xl text-white shadow-lg transition-all duration-500 group-hover:shadow-xl z-10`}
-                      style={{
-                        transform: hoveredItem === index ? 'scale(1.15) rotate(-5deg)' : 'scale(1) rotate(0deg)',
-                      }}
-                    >
-                      <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
-                      <item.icon size={32} className="relative z-10" />
-                      
-                      {/* Emoji overlay */}
-                      <div className="absolute -top-2 -right-2 text-2xl">{item.emoji}</div>
-                    </div>
-                    
-                    {/* Pulsing dot for timeline */}
-                    <div className="w-4 h-4 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full mt-4 animate-pulse shadow-lg"></div>
-                  </div>
+                <div 
+                  className={`relative backdrop-blur-xl bg-gradient-to-r ${item.bgGradient} rounded-3xl border border-white/40 shadow-2xl overflow-hidden transition-all duration-700 ${
+                    hoveredItem === index ? 'shadow-3xl scale-[1.02] -translate-y-2' : ''
+                  }`}
+                >
+                  {/* Premium glow effect */}
+                  <div className={`absolute -inset-0.5 bg-gradient-to-r ${item.gradient} opacity-0 transition-all duration-700 blur-xl rounded-3xl ${
+                    hoveredItem === index ? 'opacity-20' : ''
+                  }`}></div>
+                  
+                  {/* Luxury content container */}
+                  <div className="relative z-10 p-10">
+                    <div className="flex items-start gap-8">
+                      {/* Icon & Timeline */}
+                      <div className="flex flex-col items-center">
+                        <div 
+                          className={`relative p-5 bg-gradient-to-br ${item.gradient} rounded-2xl text-white shadow-xl transition-all duration-700 ${
+                            hoveredItem === index ? 'shadow-2xl scale-110 -rotate-3' : ''
+                          }`}
+                        >
+                          <div className={`absolute inset-0 bg-white/20 rounded-2xl opacity-0 transition-opacity duration-500 ${
+                            hoveredItem === index ? 'opacity-100' : ''
+                          }`}></div>
+                          <item.icon size={36} strokeWidth={1.5} className="relative z-10" />
+                          
+                          {/* Floating emoji */}
+                          <div 
+                            className={`absolute -top-3 -right-3 text-3xl transition-all duration-500 ${
+                              hoveredItem === index ? 'scale-125 rotate-12' : ''
+                            }`}
+                          >
+                            {item.emoji}
+                          </div>
+                        </div>
+                        
+                        {/* Enhanced timeline dot */}
+                        <div className={`w-5 h-5 bg-gradient-to-r ${item.gradient} rounded-full mt-6 shadow-lg transition-all duration-500 ${
+                          hoveredItem === index ? 'animate-pulse scale-150' : 'animate-pulse'
+                        }`}>
+                          <div className="absolute inset-1 bg-white rounded-full opacity-60"></div>
+                        </div>
+                      </div>
 
-                  {/* Content */}
-                  <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-4">
-                      <Clock className="w-5 h-5 text-purple-600" />
-                      <span className="text-purple-700 font-semibold text-lg">{item.time}</span>
-                    </div>
-                    
-                    <h3 className="text-2xl font-bold text-gray-800 mb-3 group-hover:text-gray-900 transition-colors duration-300">
-                      {item.title}
-                    </h3>
-                    
-                    <p className="text-gray-700 leading-relaxed text-lg group-hover:text-gray-800 transition-colors duration-300">
-                      {item.description}
-                    </p>
+                      {/* Content */}
+                      <div className="flex-1">
+                        {/* Time with elegant styling */}
+                        <div className="flex items-center gap-4 mb-6">
+                          <div className={`p-2 bg-${item.accent}-50 rounded-lg`}>
+                            <Clock className={`w-5 h-5 text-${item.accent}-600`} strokeWidth={2} />
+                          </div>
+                          <span className={`text-${item.accent}-700 font-bold text-lg tracking-wide`}>
+                            {item.time}
+                          </span>
+                        </div>
+                        
+                        {/* Title with premium styling */}
+                        <h3 className={`text-3xl md:text-4xl font-black text-slate-900 mb-4 tracking-tight transition-all duration-300 ${
+                          hoveredItem === index ? 'text-slate-800 translate-x-1' : ''
+                        }`}>
+                          {item.title}
+                        </h3>
+                        
+                        {/* Description */}
+                        <p className={`text-slate-700 text-lg leading-relaxed font-light transition-all duration-300 ${
+                          hoveredItem === index ? 'text-slate-800' : ''
+                        }`}>
+                          {item.description}
+                        </p>
 
-                    {/* Decorative elements */}
-                    <div className="flex gap-2 mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                      {[...Array(3)].map((_, i) => (
-                        <Star 
-                          key={i} 
-                          className={`w-4 h-4 text-${item.gradient.split('-')[1]}-400`}
-                          style={{ animationDelay: `${i * 100}ms` }}
-                        />
-                      ))}
+                        {/* Decorative stars */}
+                        <div className={`flex gap-2 mt-6 transition-all duration-500 ${
+                          hoveredItem === index ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'
+                        }`}>
+                          {[...Array(3)].map((_, i) => (
+                            <Star 
+                              key={i} 
+                              className={`w-4 h-4 text-${item.accent}-400 transition-all duration-300`}
+                              style={{ 
+                                animationDelay: `${i * 100}ms`,
+                                animation: hoveredItem === index ? 'float 2s ease-in-out infinite' : 'none'
+                              }}
+                              strokeWidth={2}
+                            />
+                          ))}
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
 
-        {/* Call to Action */}
-        <div className={`text-center mt-16 transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`} style={{ transitionDelay: '1400ms' }}>
-          <div className="relative inline-block">
-            <div className="absolute -inset-4 bg-gradient-to-r from-purple-600/30 to-pink-600/30 blur-xl rounded-full animate-pulse"></div>
-            <a 
-              href="#" 
-              className="relative inline-flex items-center gap-4 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white px-12 py-6 rounded-3xl font-bold shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-110 group overflow-hidden text-lg"
-            >
-              {/* Animated background */}
-              <div className="absolute inset-0 bg-gradient-to-r from-indigo-700 via-purple-700 to-pink-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          {/* Premium Call to Action */}
+          <div className={`text-center mt-20 transform transition-all duration-1200 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`} style={{ transitionDelay: '1600ms' }}>
+            <div className="backdrop-blur-lg bg-white/60 rounded-3xl p-12 border border-white/40 max-w-4xl mx-auto shadow-xl">
+              <h3 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
+                Secure Your Premium Experience
+              </h3>
+              <p className="text-slate-700 text-xl leading-relaxed mb-10 font-light">
+                Join India's most distinguished leaders for an unforgettable journey of innovation and excellence.
+              </p>
               
-              {/* Shimmer effect */}
-              <div 
-                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 group-hover:translate-x-full transition-transform duration-1000"
-                style={{ transform: 'translateX(-100%)' }}
-              />
-              
-              <Sparkles className="relative z-10 group-hover:rotate-180 transition-transform duration-700" size={24} />
-              <span className="relative z-10">Reserve Your Seat</span>
-              <Star className="relative z-10 group-hover:scale-125 transition-transform duration-500" size={24} />
-            </a>
+              <div className="relative inline-block">
+                <div className="absolute -inset-4 bg-gradient-to-r from-indigo-600/30 via-purple-600/30 to-pink-600/30 blur-xl rounded-full animate-pulse"></div>
+                <button className="group relative inline-flex items-center gap-4 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white px-12 py-6 rounded-2xl font-bold shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-105 overflow-hidden text-lg">
+                  {/* Sophisticated hover effect */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                  
+                  <Sparkles size={24} strokeWidth={2} className="group-hover:rotate-180 transition-transform duration-700 relative z-10" />
+                  <span className="relative z-10 tracking-wide">Reserve Your Seat</span>
+                  <Star size={24} strokeWidth={2} className="group-hover:scale-125 transition-transform duration-500 relative z-10" />
+                </button>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Bottom gradient fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-white via-white/80 to-transparent pointer-events-none"></div>
-    </section>
+        {/* Elegant bottom fade */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white via-white/90 to-transparent pointer-events-none"></div>
+      </section>
+    </>
   );
 };
 
