@@ -16,7 +16,7 @@ mouseControls: true,
   touchControls: true,
   gyroControls: false,
   minHeight: 200.00,
-  minWidth: 200.00,
+  minWidth: 100.00,
   scale: 1.00,
   scaleMobile: 1.00,
   color: 0xff4282,
@@ -32,7 +32,7 @@ mouseControls: true,
   return (
     <div
       ref={vantaRef}
-      className="relative w-full h-[400px] flex items-center justify-center text-white"
+      className="relative w-full h-[700px] flex items-center justify-center text-white"
     >
       <div className="absolute z-10">{children}</div>
     </div>
