@@ -2,7 +2,7 @@ import React from "react";
 import logo_path from "../assets/img/logo.png";
 import Button from '@mui/material/Button';
 // import Countdown from "./Countdown";
-
+import {Link,animateScroll as scroll} from "react-scroll";
 import { motion } from "framer-motion";
 
 import MediaExposure from "./MediaExposure";
@@ -36,7 +36,8 @@ const Homepage = () => {
         </p>
         <div className="contact-us flex items-center">
           <i className='bx bx-envelope'></i>
-          <a className="text-lime-50 pr-6 flex items-center" href="#contact">Contact Us</a>
+         
+           <Link className="text-lime-50 pr-6 flex items-center"  activeClass="active" to="contact" spy={true} smooth={true} offset={-70} duration={500}>Contact Us</Link>
         </div>
       </div>
 
@@ -50,11 +51,9 @@ const Homepage = () => {
         </div>
 
         <nav className="menu flex items-center">
-          <ul className="flex w-full justify-around gap-2.5 items-center">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
+          <Link activeClass="active" to="event" spy={true} smooth={true} offset={-70} duration={500}>Event</Link>
+          <Link activeClass="active" to="delegate" spy={true} smooth={true} offset={-70} duration={500}>Delegate</Link>
+          <Link activeClass="active" to="section1" spy={true} smooth={true} offset={-70} duration={500}>Home</Link>
         </nav>
       </div>
 
@@ -84,10 +83,15 @@ const Homepage = () => {
       <WhyAttend />
       <WhoShouldAttend />
       <EventSchedule />
-      <DelegatePasses />
-      <VenueInfo />
+      <section id="delegate">  <DelegatePasses /></section>
+      <section id="event">   <VenueInfo /></section>
+   
+    
+    
       <Partners />
+       <section id="contact">   <ContactSection /></section>
       <RegisterNow />
+
 
 
  
