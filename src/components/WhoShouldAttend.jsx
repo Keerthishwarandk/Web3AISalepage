@@ -1,5 +1,5 @@
 // components/WhoShouldAttend.jsx
-import React, { useRef, useEffect } from 'react';
+import React from 'react';
 import { useKeenSlider } from 'keen-slider/react';
 import { motion } from 'framer-motion';
 import 'keen-slider/keen-slider.min.css';
@@ -12,10 +12,9 @@ const cards = [
   { icon: <FaBalanceScale size={32} />, title: 'For Policymakers', desc: 'Shape national digital priorities' },
 ];
 
-// Auto-slide plugin
+// Auto-slide plugin (no manual interaction)
 function AutoSlidePlugin(slider) {
   let timeout;
-  let mouseOver = false;
 
   function clearNextTimeout() {
     clearTimeout(timeout);
@@ -23,41 +22,32 @@ function AutoSlidePlugin(slider) {
 
   function nextTimeout() {
     clearTimeout(timeout);
-    if (mouseOver) return;
     timeout = setTimeout(() => {
       slider.next();
-    }, 3000); // Change slide every 3s
+    }, 2000);
   }
 
-  slider.on("created", () => {
-    slider.container.addEventListener("mouseover", () => {
-      mouseOver = true;
-      clearNextTimeout();
-    });
-    slider.container.addEventListener("mouseout", () => {
-      mouseOver = false;
-      nextTimeout();
-    });
+  slider.on('created', () => {
     nextTimeout();
   });
-  slider.on("dragStarted", clearNextTimeout);
-  slider.on("animationEnded", nextTimeout);
-  slider.on("updated", nextTimeout);
+
+  slider.on('animationEnded', nextTimeout);
+  slider.on('updated', nextTimeout);
 }
 
 const WhoShouldAttend = () => {
-  const [sliderRef] = useKeenSlider({
-    loop: true,
-    breakpoints: {
-      '(min-width: 768px)': { slides: { perView: 2, spacing: 16 } },
-      '(min-width: 1024px)': { slides: { perView: 3, spacing: 24 } },
+  const [sliderRef] = useKeenSlider(
+    {
+      loop: true,
+      drag: false, // ❌ disables manual sliding
+      breakpoints: {
+        '(min-width: 768px)': { slides: { perView: 2, spacing: 16 } },
+        '(min-width: 1024px)': { slides: { perView: 3, spacing: 24 } },
+      },
+      slides: { perView: 1, spacing: 12 },
     },
-    slides: { perView: 1, spacing: 12 },
-    renderMode: 'performance',
-    created: (slider) => {
-      AutoSlidePlugin(slider);
-    }
-  }, [AutoSlidePlugin]);
+    [AutoSlidePlugin] // ✅ plugin for automatic sliding
+  );
 
   return (
     <div className="py-10 px-6 bg-gray-100">
@@ -67,10 +57,8 @@ const WhoShouldAttend = () => {
           <motion.div
             key={index}
             className="keen-slider__slide"
-            whileHover={{ scale: 1.05 }}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: index * 0.1 }}
+          
+    
           >
             <div className="bg-white hover:bg-gray-200 transition-all rounded-xl shadow-lg p-6 text-center h-full">
               <div className="mb-4 text-indigo-800">{card.icon}</div>

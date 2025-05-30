@@ -71,9 +71,7 @@ const WhyAttend = () => {
           <motion.div
             key={idx}
             className="keen-slider__slide"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: idx * 0.2 }}
+
           >
             <div className="bg-white rounded-2xl shadow-md p-6 mx-2 h-full flex flex-col items-center justify-center text-center transition-transform duration-300 hover:scale-105">
               {item.icon}
