@@ -23,7 +23,7 @@ import DelegatePasses from "./DelegatePasses";
 import VenueInfo from "./VenueInfo";
 import Partners from "./Partners";
 import RegisterNow from "./RegisterNow";
-
+import Header from "./Header";
 const Homepage = () => {
   return (
     <>
@@ -91,6 +91,7 @@ const Homepage = () => {
           </Link>
         </nav>
       </div>
+      <Header />
 
       {/* Animated Banner */}
       <section id="banner-object" className="mb-12">
@@ -118,6 +119,20 @@ const Homepage = () => {
       <WhyAttend />
       <WhoShouldAttend />
       <EventSchedule />
+      <section id="delegate">
+        {" "}
+        <DelegatePasses />
+      </section>
+      <section id="event">
+        {" "}
+        <VenueInfo />
+      </section>
+
+      {/* <Partners /> */}
+      <section id="contact">
+        {" "}
+        <ContactSection />
+      </section>
       <section id="delegate">
         {" "}
         <DelegatePasses />
