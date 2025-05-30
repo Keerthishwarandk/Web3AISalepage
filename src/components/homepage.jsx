@@ -62,7 +62,7 @@ const Homepage = () => {
    
     
     
-      <Partners />
+      {/* <Partners /> */}
        <section id="contact">   <ContactSection /></section>
       <RegisterNow />
 
