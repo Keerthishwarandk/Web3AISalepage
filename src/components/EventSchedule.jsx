@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import { Clock, Award, Users, Calendar, Coffee, Mic, Star, Sparkles } from 'lucide-react';
 
@@ -70,7 +71,7 @@ const EventSchedule = () => {
 
   const TimelineConnector = ({ index, total, isHovered }) => (
     index < total - 1 && (
-      <div className="absolute left-8 top-24 w-0.5 h-20 bg-gradient-to-b from-slate-300 via-purple-300 to-blue-300 opacity-40">
+      <div className="absolute left-6 top-16 w-0.5 h-12 bg-gradient-to-b from-slate-300 via-purple-300 to-blue-300 opacity-40">
         <div 
           className={`absolute inset-0 bg-gradient-to-b from-purple-500 to-blue-500 transition-all duration-700 ${
             isHovered ? 'opacity-80 scale-x-[2]' : 'opacity-0'
@@ -126,13 +127,12 @@ const EventSchedule = () => {
         `}
       </style>
       
-      <section className="relative min-h-screen py-24 px-6 overflow-hidden" id="schedule">
-        {/* Ultra-premium background */}
+      <section className="relative py-16 px-4 overflow-hidden" id="schedule">
+       
         <div className="absolute inset-0">
-          {/* Base sophisticated gradient */}
+         
           <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-slate-50 to-indigo-50"></div>
           
-          {/* Luxury mesh overlay */}
           <div 
             className="absolute inset-0 opacity-30"
             style={{
@@ -146,7 +146,6 @@ const EventSchedule = () => {
             }}
           />
 
-          {/* Dynamic light rays */}
           <div 
             className="absolute inset-0 opacity-15"
             style={{
@@ -155,36 +154,34 @@ const EventSchedule = () => {
             }}
           />
 
-          {/* Premium texture overlay */}
           <div 
             className="absolute inset-0 opacity-[0.015]"
             style={{
               backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(0,0,0,0.2) 1px, transparent 0)',
-              backgroundSize: '28px 28px'
+              backgroundSize: '20px 20px'
             }}
           />
         </div>
 
-        {/* Elegant floating elements */}
-        <FloatingElement delay={0} size="w-28 h-28" position="top-20 left-[10%]" color="rgba(99, 102, 241, 0.08), rgba(147, 197, 253, 0.04)" />
-        <FloatingElement delay={2} size="w-20 h-20" position="top-60 right-[15%]" color="rgba(168, 85, 247, 0.06), rgba(196, 181, 253, 0.03)" blur />
-        <FloatingElement delay={1} size="w-24 h-24" position="bottom-40 left-[65%]" color="rgba(236, 72, 153, 0.07), rgba(251, 207, 232, 0.04)" />
-        <FloatingElement delay={3} size="w-16 h-16" position="top-96 right-[70%]" color="rgba(59, 130, 246, 0.09), rgba(165, 180, 252, 0.05)" blur />
+        <FloatingElement delay={0} size="w-16 h-16" position="top-12 left-[10%]" color="rgba(99, 102, 241, 0.08), rgba(147, 197, 253, 0.04)" />
+        <FloatingElement delay={2} size="w-12 h-12" position="top-32 right-[15%]" color="rgba(168, 85, 247, 0.06), rgba(196, 181, 253, 0.03)" blur />
+        <FloatingElement delay={1} size="w-14 h-14" position="bottom-24 left-[65%]" color="rgba(236, 72, 153, 0.07), rgba(251, 207, 232, 0.04)" />
+        <FloatingElement delay={3} size="w-10 h-10" position="top-48 right-[70%]" color="rgba(59, 130, 246, 0.09), rgba(165, 180, 252, 0.05)" blur />
 
-        <div className="relative max-w-6xl mx-auto">
-          {/* Refined Header */}
-          <div className={`text-center mb-20 transform transition-all duration-1200 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
-            <div className="flex justify-center items-center mb-8">
+        <div className="relative max-w-4xl mx-auto">
+        
+          <div className={`text-center mb-12 transform transition-all duration-1200 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
+            <div className="flex justify-center items-center mb-6">
               <div className="relative">
-                <div className="absolute -inset-4 bg-gradient-to-r from-purple-600/10 via-indigo-600/10 to-blue-600/10 blur-2xl rounded-full"></div>
-                <div className="relative p-4 bg-white/80 backdrop-blur-sm rounded-2xl border border-white/60 shadow-lg">
-                  <Calendar className="w-12 h-12 text-slate-700" />
+                <div className="absolute -inset-3 bg-gradient-to-r from-purple-600/10 via-indigo-600/10 to-blue-600/10 blur-xl rounded-full"></div>
+                <div className="relative p-3 bg-white/80 backdrop-blur-sm rounded-xl border border-white/60 shadow-lg">
+                  <Calendar className="w-8 h-8 text-slate-700" />
                 </div>
               </div>
             </div>
             
-            <div className="space-y-6">
-              <h2 className="text-6xl md:text-7xl font-black tracking-tight relative">
+            <div className="space-y-4">
+              <h2 className="text-4xl md:text-5xl font-black tracking-tight relative">
                 <span className="bg-gradient-to-r from-slate-900 via-slate-700 to-slate-900 bg-clip-text text-transparent">
                   Event
                 </span>
@@ -194,16 +191,16 @@ const EventSchedule = () => {
                 </span>
               </h2>
               
-              <p className="text-xl md:text-2xl text-slate-600 max-w-3xl mx-auto leading-relaxed font-light">
+              <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
                 A meticulously crafted agenda designed to inspire, connect, and drive India's future forward
               </p>
             </div>
             
-            <div className="flex justify-center mt-12">
+            <div className="flex justify-center mt-8">
               <div className="relative">
-                <div className="w-48 h-0.5 bg-gradient-to-r from-transparent via-slate-300 to-transparent"></div>
+                <div className="w-32 h-0.5 bg-gradient-to-r from-transparent via-slate-300 to-transparent"></div>
                 <div 
-                  className="absolute inset-0 w-48 h-0.5 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-60"
+                  className="absolute inset-0 w-32 h-0.5 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-60"
                   style={{ 
                     animation: 'shimmerLine 3s ease-in-out infinite',
                     background: 'linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.8), transparent)',
@@ -214,49 +211,47 @@ const EventSchedule = () => {
             </div>
           </div>
 
-          {/* Premium Schedule Timeline */}
           <div className="relative">
             {scheduleItems.map((item, index) => (
               <div 
                 key={item.title}
-                className={`relative mb-16 transform transition-all duration-700 ${isVisible ? 'translate-x-0 opacity-100' : 'translate-x-12 opacity-0'}`}
+                className={`relative mb-10 transform transition-all duration-700 ${isVisible ? 'translate-x-0 opacity-100' : 'translate-x-12 opacity-0'}`}
                 style={{ 
                   transitionDelay: `${600 + index * 300}ms`,
                 }}
                 onMouseEnter={() => setHoveredItem(index)}
                 onMouseLeave={() => setHoveredItem(null)}
               >
-                {/* Timeline Connector */}
+               
                 <TimelineConnector index={index} total={scheduleItems.length} isHovered={hoveredItem === index} />
                 
                 <div 
-                  className={`relative backdrop-blur-xl bg-gradient-to-r ${item.bgGradient} rounded-3xl border border-white/40 shadow-2xl overflow-hidden transition-all duration-700 ${
-                    hoveredItem === index ? 'shadow-3xl scale-[1.02] -translate-y-2' : ''
+                  className={`relative backdrop-blur-xl bg-gradient-to-r ${item.bgGradient} rounded-2xl border border-white/40 shadow-xl overflow-hidden transition-all duration-700 ${
+                    hoveredItem === index ? 'shadow-2xl scale-[1.02] -translate-y-1' : ''
                   }`}
                 >
-                  {/* Premium glow effect */}
-                  <div className={`absolute -inset-0.5 bg-gradient-to-r ${item.gradient} opacity-0 transition-all duration-700 blur-xl rounded-3xl ${
+                 
+                  <div className={`absolute -inset-0.5 bg-gradient-to-r ${item.gradient} opacity-0 transition-all duration-700 blur-lg rounded-2xl ${
                     hoveredItem === index ? 'opacity-20' : ''
                   }`}></div>
                   
-                  {/* Luxury content container */}
-                  <div className="relative z-10 p-10">
-                    <div className="flex items-start gap-8">
-                      {/* Icon & Timeline */}
+                 
+                  <div className="relative z-10 p-6">
+                    <div className="flex items-start gap-6">
+                     
                       <div className="flex flex-col items-center">
                         <div 
-                          className={`relative p-5 bg-gradient-to-br ${item.gradient} rounded-2xl text-white shadow-xl transition-all duration-700 ${
-                            hoveredItem === index ? 'shadow-2xl scale-110 -rotate-3' : ''
+                          className={`relative p-3 bg-gradient-to-br ${item.gradient} rounded-xl text-white shadow-lg transition-all duration-700 ${
+                            hoveredItem === index ? 'shadow-xl scale-110 -rotate-3' : ''
                           }`}
                         >
-                          <div className={`absolute inset-0 bg-white/20 rounded-2xl opacity-0 transition-opacity duration-500 ${
+                          <div className={`absolute inset-0 bg-white/20 rounded-xl opacity-0 transition-opacity duration-500 ${
                             hoveredItem === index ? 'opacity-100' : ''
                           }`}></div>
-                          <item.icon size={36} strokeWidth={1.5} className="relative z-10" />
+                          <item.icon size={24} strokeWidth={1.5} className="relative z-10" />
                           
-                          {/* Floating emoji */}
                           <div 
-                            className={`absolute -top-3 -right-3 text-3xl transition-all duration-500 ${
+                            className={`absolute -top-2 -right-2 text-xl transition-all duration-500 ${
                               hoveredItem === index ? 'scale-125 rotate-12' : ''
                             }`}
                           >
@@ -264,48 +259,43 @@ const EventSchedule = () => {
                           </div>
                         </div>
                         
-                        {/* Enhanced timeline dot */}
-                        <div className={`w-5 h-5 bg-gradient-to-r ${item.gradient} rounded-full mt-6 shadow-lg transition-all duration-500 ${
+                        <div className={`w-3 h-3 bg-gradient-to-r ${item.gradient} rounded-full mt-4 shadow-md transition-all duration-500 ${
                           hoveredItem === index ? 'animate-pulse scale-150' : 'animate-pulse'
                         }`}>
-                          <div className="absolute inset-1 bg-white rounded-full opacity-60"></div>
+                          <div className="absolute inset-0.5 bg-white rounded-full opacity-60"></div>
                         </div>
                       </div>
 
-                      {/* Content */}
                       <div className="flex-1">
-                        {/* Time with elegant styling */}
-                        <div className="flex items-center gap-4 mb-6">
-                          <div className={`p-2 bg-${item.accent}-50 rounded-lg`}>
-                            <Clock className={`w-5 h-5 text-${item.accent}-600`} strokeWidth={2} />
+                       
+                        <div className="flex items-center gap-3 mb-4">
+                          <div className={`p-1.5 bg-${item.accent}-50 rounded-lg`}>
+                            <Clock className={`w-4 h-4 text-${item.accent}-600`} strokeWidth={2} />
                           </div>
-                          <span className={`text-${item.accent}-700 font-bold text-lg tracking-wide`}>
+                          <span className={`text-${item.accent}-700 font-bold text-base tracking-wide`}>
                             {item.time}
                           </span>
                         </div>
                         
-                        {/* Title with premium styling */}
-                        <h3 className={`text-3xl md:text-4xl font-black text-slate-900 mb-4 tracking-tight transition-all duration-300 ${
+                        <h3 className={`text-xl md:text-2xl font-black text-slate-900 mb-3 tracking-tight transition-all duration-300 ${
                           hoveredItem === index ? 'text-slate-800 translate-x-1' : ''
                         }`}>
                           {item.title}
                         </h3>
                         
-                        {/* Description */}
-                        <p className={`text-slate-700 text-lg leading-relaxed font-light transition-all duration-300 ${
+                        <p className={`text-slate-700 text-base leading-relaxed font-light transition-all duration-300 ${
                           hoveredItem === index ? 'text-slate-800' : ''
                         }`}>
                           {item.description}
                         </p>
 
-                        {/* Decorative stars */}
-                        <div className={`flex gap-2 mt-6 transition-all duration-500 ${
+                        <div className={`flex gap-1.5 mt-4 transition-all duration-500 ${
                           hoveredItem === index ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'
                         }`}>
                           {[...Array(3)].map((_, i) => (
                             <Star 
                               key={i} 
-                              className={`w-4 h-4 text-${item.accent}-400 transition-all duration-300`}
+                              className={`w-3 h-3 text-${item.accent}-400 transition-all duration-300`}
                               style={{ 
                                 animationDelay: `${i * 100}ms`,
                                 animation: hoveredItem === index ? 'float 2s ease-in-out infinite' : 'none'
@@ -322,33 +312,31 @@ const EventSchedule = () => {
             ))}
           </div>
 
-          {/* Premium Call to Action */}
-          <div className={`text-center mt-20 transform transition-all duration-1200 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`} style={{ transitionDelay: '1600ms' }}>
-            <div className="backdrop-blur-lg bg-white/60 rounded-3xl p-12 border border-white/40 max-w-4xl mx-auto shadow-xl">
-              <h3 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
+          <div className={`text-center mt-12 transform transition-all duration-1200 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`} style={{ transitionDelay: '1600ms' }}>
+            <div className="backdrop-blur-lg bg-white/60 rounded-2xl p-8 border border-white/40 max-w-3xl mx-auto shadow-lg">
+              <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
                 Secure Your Premium Experience
               </h3>
-              <p className="text-slate-700 text-xl leading-relaxed mb-10 font-light">
+              <p className="text-slate-700 text-lg leading-relaxed mb-8 font-light">
                 Join India's most distinguished leaders for an unforgettable journey of innovation and excellence.
               </p>
               
               <div className="relative inline-block">
-                <div className="absolute -inset-4 bg-gradient-to-r from-indigo-600/30 via-purple-600/30 to-pink-600/30 blur-xl rounded-full animate-pulse"></div>
-                <button className="group relative inline-flex items-center gap-4 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white px-12 py-6 rounded-2xl font-bold shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-105 overflow-hidden text-lg">
-                  {/* Sophisticated hover effect */}
+                <div className="absolute -inset-3 bg-gradient-to-r from-indigo-600/30 via-purple-600/30 to-pink-600/30 blur-lg rounded-full animate-pulse"></div>
+                <button className="group relative inline-flex items-center gap-3 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white px-8 py-4 rounded-xl font-bold shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 overflow-hidden text-base">
+                 
                   <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                   
-                  <Sparkles size={24} strokeWidth={2} className="group-hover:rotate-180 transition-transform duration-700 relative z-10" />
+                  <Sparkles size={20} strokeWidth={2} className="group-hover:rotate-180 transition-transform duration-700 relative z-10" />
                   <span className="relative z-10 tracking-wide">Reserve Your Seat</span>
-                  <Star size={24} strokeWidth={2} className="group-hover:scale-125 transition-transform duration-500 relative z-10" />
+                  <Star size={20} strokeWidth={2} className="group-hover:scale-125 transition-transform duration-500 relative z-10" />
                 </button>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Elegant bottom fade */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white via-white/90 to-transparent pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-white via-white/90 to-transparent pointer-events-none"></div>
       </section>
     </>
   );
@@ -356,21 +344,3 @@ const EventSchedule = () => {
 
 export default EventSchedule;
 
-
-
-
-/* import React from 'react';
-
-const EventSchedule = () => (
-  <section className="bg-white py-10 px-6" id="schedule">
-    <h2 className="text-3xl font-bold text-center text-purple-900 mb-6">🗓️ Event Schedule</h2>
-    <ul className="max-w-3xl mx-auto text-gray-700 space-y-4">
-      <li><strong>☀️ Morning Kickoff (10:00 AM – 10:30 AM):</strong> Inaugural address by national leaders + Cultural performances</li>
-      <li><strong>🔍 Industry Roundtables (10:30 AM – 2:00 PM):</strong> AI, FinTech, Energy, MSME, HealthTech + Networking breaks</li>
-      <li><strong>🏆 Viksit Bharat Awards (3:00 PM – 4:30 PM):</strong> Honors for leaders + Press coverage</li>
-      <li><strong>🥂 Gala Dinner (4:30 PM – 9:00 PM):</strong> Networking with India’s elite</li>
-    </ul>
-  </section>
-);
-
-export default EventSchedule; */
