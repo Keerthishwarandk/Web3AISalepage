@@ -65,7 +65,7 @@ const Homepage = () => {
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.4 }}
-            className="text-4xl font-bold text-white text-center p-8"
+            className="text-6xl font-bold text-white text-center p-8"
           >
             Join the Bharat Economic Forum Industry Conclave 2025
           </motion.h1>

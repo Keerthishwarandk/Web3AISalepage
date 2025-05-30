@@ -30,32 +30,43 @@ const mediaData = [
 
 const MediaExposure = () => {
   return (
-    <Box sx={{ py: 6, px: { xs: 2, md: 8 }, backgroundColor: '#f5f5f5' }}>
+    <Box sx={{ py: 8, px: { xs: 2, md: 4 }, backgroundColor: '#f5f5f5' }}>
       <Typography variant="h4" fontWeight="bold" align="center" gutterBottom>
         🔊 Media & PR Exposure
       </Typography>
       <Typography variant="subtitle1" align="center" color="textSecondary" gutterBottom>
-        💥 Your Name in Headlines!
+        ✴️ Your Name in Headlines!
       </Typography>
-      <Grid container spacing={4} mt={3}>
+
+      <Grid
+        container
+        spacing={4}
+        justifyContent="center"
+        sx={{ maxWidth: '1000px', mx: 'auto', mt: 4 }}
+      >
         {mediaData.map((item, index) => (
-          <Grid item xs={12} sm={6} md={3} key={index}>
+          <Grid item xs={12} sm={6} md={6} key={index} sx={{ display: 'flex' }}>
             <Card
               sx={{
-                height: '100%',
-                p: 2,
+                width: '400px',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
                 textAlign: 'center',
+                p: 4,
+                height: '200px',
                 transition: 'transform 0.3s',
                 '&:hover': { transform: 'scale(1.05)' },
               }}
-              elevation={3}
+              elevation={4}
             >
-              <CardContent>
-                {item.icon}
-                <Typography variant="h6" fontWeight="bold" mt={1}>
+              <CardContent sx={{ flexGrow: 1 }}>
+                <Box mb={2}>{item.icon}</Box>
+                <Typography variant="h6" fontWeight="bold" fontSize="1.25rem" gutterBottom>
                   {item.title}
                 </Typography>
-                <Typography variant="body2" color="textSecondary" mt={1}>
+                <Typography variant="body1" color="textSecondary">
                   {item.description}
                 </Typography>
               </CardContent>
