@@ -5,7 +5,7 @@ import Influence from './flexcomponents/Influence';
 
 export default function MultiActionAreaCard() {
   return (
-    <div class="flex flex-row ...">
+    <div class="flex justify-center  flex-row ...">
 
     <Collabrate/>
     <Discover/>
